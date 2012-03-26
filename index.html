@@ -1,0 +1,422 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<!-- 
+		Author Alexander Bezrukov aka versus <god@goan.ru>
+	-->
+	<title>Topface: Chat</title>
+	<link rel="stylesheet" href="css/general.css" media="screen" type="text/css" />
+	<!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="css/ie.css" />
+	<![endif]-->
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.corner.js"></script>
+	<script type="text/javascript" src="js/server.js"></script>
+	<script type="text/javascript" src="js/templator.js"></script>
+	<script type="text/javascript" src="js/chat.js"></script>
+	<script type="text/javascript" src="js/topface.js"></script>
+	<script type="text/javascript" src="js/general.js"></script>
+</head>
+<body>
+	<div class="chat-wrapper">
+		<div class="sidebar">
+			<div class="list users container">
+				<div class="item" id="user_7">
+					<div class="left-block">
+						<span class="status online">&nbsp;</span>
+						<span class="name">Ренат</span>,
+						<span class="age">21</span>
+					</div>
+					<div class="right-block">
+						<span class="actions">
+							<span class="action delete">&nbsp;</span>
+						</span>
+						<span class="unread-message-count corners-big">1</span>
+						<span class="avatar"><img src="images/content/avatars/pic1_m.png" class="corners" /></span>
+					</div>
+				</div>
+				<div class="item active" id="user_8">
+					<div class="left-block">
+						<span class="status online">&nbsp;</span>
+						<span class="name">Семён</span>,
+						<span class="age">23</span>
+					</div>
+					<div class="right-block">
+						<span class="actions">
+							<span class="action delete" title="Удалить">&nbsp;</span>
+						</span>
+						<span class="unread-message-count corners-big">25</span>
+						<span class="avatar"><img src="images/content/avatars/pic2_m.png" class="corners" /></span>
+					</div>
+				</div>
+				<div class="item" id="user_3">
+					<div class="left-block">
+						<span class="status online">&nbsp;</span>
+						<span class="name">Сергей</span>,
+						<span class="age">45</span>
+					</div>
+					<div class="right-block">
+						<span class="actions">
+							<span class="action delete" title="Удалить">&nbsp;</span>
+						</span>
+						<span class="unread-message-count corners-big">34</span>
+						<span class="avatar"><img src="images/content/avatars/pic3_m.png" class="corners" /></span>
+					</div>
+				</div>
+				<div class="item" id="user_4">
+					<div class="left-block">
+						<span class="status offline">&nbsp;</span>
+						<span class="name">Павлик</span>,
+						<span class="age">16</span>
+					</div>
+					<div class="right-block">
+						<span class="actions">
+							<span class="action delete" title="Удалить">&nbsp;</span>
+						</span>
+						<span class="unread-message-count corners-big hidden"></span>
+						<span class="avatar"><img src="images/content/avatars/pic4_m.png" class="corners" /></span>
+					</div>
+				</div>
+				<div class="item" id="user_123">
+					<div class="left-block">
+						<span class="status offline">&nbsp;</span>
+						<span class="name">Алексей</span>,
+						<span class="age">34</span>
+					</div>
+					<div class="right-block">
+						<span class="actions">
+							<span class="action delete" title="Удалить">&nbsp;</span>
+						</span>
+						<span class="unread-message-count corners-big hidden"></span>
+						<span class="avatar"><img src="images/content/avatars/pic5_m.png" class="corners" /></span>
+					</div>
+				</div>
+				<div class="item" id="user_1">
+					<div class="left-block">
+						<span class="status offline">&nbsp;</span>
+						<span class="name">Сергей</span>,
+						<span class="age">24</span>
+					</div>
+					<div class="right-block">
+						<span class="actions">
+							<span class="action delete" title="Удалить">&nbsp;</span>
+						</span>
+						<span class="unread-message-count corners-big hidden"></span>
+						<span class="avatar loading">&nbsp;</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main">
+			<div class="collocutor-box">
+				<div class="collocutor container">
+					<div class="avatar corners">
+						<a href="#">
+							<img src="images/content/avatars/pic2.png" />
+						</a>
+					</div>
+					<div class="info">
+						<a href="#"><span class="name">Семён</span>, <span class="age">23</span></a>
+						<div class="place">Россия, Санкт Петербург</div>
+					</div>
+				</div>
+				<div class="actions">
+					<span class="action add-to-contacts">
+						Добавить в контакты
+					</span><br />
+					<span class="action abuse">
+						Пожаловаться
+					</span>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="chat-box container">
+				<div class="dialog-box-wrapper hidden">
+					<div class="dialog-box rating">
+						<div class="actions">
+							<span class="action close">&nbsp;</span>
+						</div>
+						<div class="title">
+							Отправьте Семёну оценку
+						</div>
+						<div class="text">
+							<span class="action send-rating rate-1" id="rate_1">&nbsp;</span><span class="action send-rating rate-2" id="rate_2">&nbsp;</span><span class="action send-rating rate-3" id="rate_3">&nbsp;</span><span class="action send-rating rate-4" id="rate_4">&nbsp;</span><span class="action send-rating rate-5" id="rate_5">&nbsp;</span><span class="action send-rating rate-6" id="rate_6">&nbsp;</span><span class="action send-rating rate-7" id="rate_7">&nbsp;</span><span class="action send-rating rate-8" id="rate_8">&nbsp;</span><span class="action send-rating rate-9" id="rate_9">&nbsp;</span><span class="action send-rating rate-10" id="rate_10">&nbsp;</span>
+						</div>
+					</div>
+				</div>
+				<div class="dialog-box-wrapper hidden">
+					<div class="dialog-box message-delete" id="msg_10">
+						<div class="actions">
+							<span class="action close">&nbsp;</span>
+						</div>
+						<div class="title">
+							Вы действительно хотите удалить сообщение?
+						</div>
+						<div class="text">
+							&laquo;привет как дела&raquo;
+						</div>
+						<div class="buttons">
+							<span class="action ok">
+								<img src="images/btn_delete.png" />
+							</span>
+							<span class="action cancel">
+								Нет, не надо удалять
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="tip-box-wrapper hidden">
+					<div class="tip-box first-message corners">
+						<div class="actions">
+							<span class="action first-message-change"><span>Другой комплимент</span></span>
+						</div>
+						<div class="title">
+							<h1>Начни с интересной фразы</h1>
+							<h2>Произведи впечатление</h2>
+						</div>
+						<div class="text">
+							<span class="action set-message">&laquo;Чертовски привлекательный!&raquo;</span>
+						</div>
+					</div>
+					<div class="tip-legend">
+						Напиши первое сообщение
+					</div>
+				</div>
+				<div class="list messages container">
+					<div class="item message" id="message_3">
+						<div class="name collocutor">
+							Cемён
+						</div>
+						<div class="status"></div>
+						<div class="time">15:36</div>
+						<div class="actions">
+							<span class="action delete">&nbsp;</span>
+						</div>
+						<div class="text">
+							привет как дела
+						</div>
+					</div>
+					<div class="item message" id="message_12">
+						<div class="name user">
+							Юлия
+						</div>
+						<div class="status"></div>
+						<div class="time">15:36</div>
+						<div class="actions">
+							<span class="action delete">&nbsp;</span>
+						</div>
+						<div class="text">
+							привет
+						</div>
+					</div>
+					<div class="item message" id="message_30">
+						<div class="name collocutor">
+							Cемён
+						</div>
+						<div class="status"></div>
+						<div class="time">15:36</div>
+						<div class="actions">
+							<span class="action delete">&nbsp;</span>
+						</div>
+						<div class="text">
+							я хочу познакомиться
+						</div>
+					</div>
+					<div class="item rating" id="message_41">
+						<div class="name collocutor invisible">
+							Семён
+						</div>
+						<div class="status"></div>
+						<div class="time">15:36</div>
+						<div class="actions">
+							<span class="action delete">&nbsp;</span>
+						</div>
+						<div class="text">
+							<img src="images/rating/star_8.png" />
+							<div class="label align-middle">
+								Вас оценили. <span class="action show-rates">Оценить в ответ</span>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="item gift" id="message_52">
+						<div class="name collocutor invisible">
+							Семён
+						</div>
+						<div class="status"></div>
+						<div class="time">15:36</div>
+						<div class="actions">
+							<span class="action delete">&nbsp;</span>
+						</div>
+						<div class="text">
+							<img src="images/gifts/bag.png" />
+							<div class="label align-middle">
+								Вам отправили подарок. <span class="action show-gifts">Отправить подарок в ответ</span>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="item message deleted" id="message_53">
+						<div class="name user">
+							Юлия
+						</div>
+						<div class="status"></div>
+						<div class="time">15:36</div>
+						<div class="actions">
+							<span class="action delete">&nbsp;</span>
+						</div>
+						<div class="text">
+							Сообщение было удалено.
+						</div>
+					</div>
+					<div class="item message" id="message_54">
+						<div class="name collocutor">
+							Cемён
+						</div>
+						<div class="status"></div>
+						<div class="time">15:36</div>
+						<div class="actions">
+							<span class="action delete">&nbsp;</span>
+						</div>
+						<div class="text">
+							Я помню чудное мгновение:<br />
+							Передо мной явилась ты.
+						</div>
+					</div>
+					<div class="item message" id="message_55">
+						<div class="name user">
+							Юлия
+						</div>
+						<div class="status"></div>
+						<div class="time">15:36</div>
+						<div class="actions">
+							<span class="action delete">&nbsp;</span>
+						</div>
+						<div class="text">
+							отличные стихи, Семён.
+						</div>
+					</div>
+					<div class="item sympathy" id="message_56">
+						<div class="name collocutor">
+							Семён
+						</div>
+						<div class="status"></div>
+						<div class="time">15:36</div>
+						<div class="actions">
+							<span class="action delete">&nbsp;</span>
+						</div>
+						<div class="text">
+							<img src="images/sympathy/heart.png" />
+							<div class="label align-middle">
+								Ты понравился. <span class="action sympathy-both">Отправить взаимную симпатию</span>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="item sympathy-both" id="message_57">
+						<div class="name user invisible">
+							Юлия
+						</div>
+						<div class="status"></div>
+						<div class="time">15:36</div>
+						<div class="actions">
+							<span class="action delete">&nbsp;</span>
+						</div>
+						<div class="text">
+							<img src="images/sympathy/double_heart.png" />
+							<div class="label align-middle">
+								У вас взаимная симатия!<br />
+								<span class="action show-gifts">Подарок</span> - лучший способ продолжить оношения.
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+				<div class="send-message-box container">
+					<div class="info attention">
+						Хотите узнать о прочтении вашего сообщения?
+						<span class="action is-read">Узнать</span>
+					</div>
+					<form action="#">
+						<div>
+							<textarea name="message">давай встретимся</textarea>
+						</div>
+						<div class="actions">
+							<span class="action send">
+								<input type="image" src="images/btn_send.png" value="Отправить" />
+							</span>
+							<span class="action show-gifts"><span>Отправить подарок</span></span>
+							<span class="action show-rates"><span>Отправить оценку</span></span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="gifts-box hidden">
+			<div class="actions corners">
+				<span class="action close">&nbsp;</span>
+			</div>
+			<h1>Подарки</h1>
+			<div class="gifts-set">
+				<div class="title">
+					<h2>Подарки за 2</h2>
+				</div>
+				<div class="gifts-line">
+					<span class="action send-gift" id="gift_1"><img src="images/gifts/coffee.png"></span>
+					<span class="action send-gift" id="gift_2"><img src="images/gifts/cristmas_hat.png"></span>
+					<span class="action send-gift" id="gift_3"><img src="images/gifts/flowers.png"></span>
+					<span class="action send-gift" id="gift_4"><img src="images/gifts/headbox.png"></span>
+					<span class="action send-gift" id="gift_5"><img src="images/gifts/heart.png"></span>
+					<span class="action send-gift" id="gift_6"><img src="images/gifts/heart_flowers.png"></span>
+					<span class="action send-gift" id="gift_1"><img src="images/gifts/coffee.png"></span>
+					<span class="action send-gift" id="gift_2"><img src="images/gifts/cristmas_hat.png"></span>
+					<span class="action send-gift" id="gift_3"><img src="images/gifts/flowers.png"></span>
+					<span class="action send-gift" id="gift_4"><img src="images/gifts/headbox.png"></span>
+					<span class="action send-gift" id="gift_5"><img src="images/gifts/heart.png"></span>
+					<span class="action send-gift" id="gift_6"><img src="images/gifts/heart_flowers.png"></span>
+				</div>
+			</div>
+			<div class="gifts-set">
+				<div class="title">
+					<h2>Подарки за 6</h2>
+				</div>
+				<div class="gifts-line">
+					<span class="action send-gift" id="gift_7"><img src="images/gifts/santa.png"></span>
+					<span class="action send-gift" id="gift_8"><img src="images/gifts/santa2.png"></span>
+					<span class="action send-gift" id="gift_9"><img src="images/gifts/santa3.png"></span>
+					<span class="action send-gift" id="gift_10"><img src="images/gifts/puppy.png"></span>
+				</div>
+			</div>
+			<div class="gifts-set">
+				<div class="title">
+					<h2>Подарки за 12</h2>
+				</div>
+				<div class="gifts-line">
+					<span class="action send-gift" id="gift_11"><img src="images/gifts/snowball.png"></span>
+					<span class="action send-gift" id="gift_12"><img src="images/gifts/xmas_tree.png"></span>
+				</div>
+			</div>
+			<div class="gifts-set">
+				<div class="title">
+					<h2>Подарки за 18</h2>
+				</div>
+				<div class="gifts-line">
+					<span class="action send-gift" id="gift_13"><img src="images/gifts/dress.png"></span>
+				</div>
+			</div>
+			<div class="gifts-set">
+				<div class="title">
+					<h2>Подарки за 1</h2>
+					<h3>Доступны только для пользователей со статусом vip</h3>
+				</div>
+				<div class="gifts-line align-center">
+					<span class="action send-gift" id="gift_70"><img src="images/gifts/vip1.png"></span>
+					<span class="action send-gift" id="gift_80"><img src="images/gifts/vip2.png"></span>
+					<span class="action send-gift" id="gift_90"><img src="images/gifts/vip3.png"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
